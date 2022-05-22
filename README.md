@@ -12,7 +12,7 @@ Adding books must be implemented without reloading the page, through a pop-up fo
 clicking on the "Save" button, before that, data about the added books should not get into the database.
 The use of MVC Razor, jQuery, Entity Framework will be a plus.
 1.2 Input parameters
-The editing form should correspond to the prototype in Fig. 1
+The editing form should correspond to the prototype in task.png
 
 ## 2.	LINQ
 Group the unique words of same length in a given sentence, sort the groups in increasing order and display the groups, the word count and the words of that length.
