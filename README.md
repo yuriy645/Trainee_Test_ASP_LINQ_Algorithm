@@ -11,12 +11,14 @@ The author has the following attributes:
 The data must be stored in a database that must conform to third normal form.
 
 1.1 Requirements for the result
+
 The result should be a working application and a script to create the database.
 Adding books must be implemented without reloading the page, through a pop-up form. Saving all the entered data occurs by 
 clicking on the "Save" button, before that, data about the added books should not get into the database.
 The use of MVC Razor, jQuery, Entity Framework will be a plus.
 
 1.2 Input parameters
+
 The editing form should correspond to the prototype in task.png.
 
 ## 2.	LINQ
