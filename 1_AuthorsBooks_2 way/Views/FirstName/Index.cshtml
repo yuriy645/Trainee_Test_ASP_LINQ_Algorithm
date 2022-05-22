@@ -1,0 +1,11 @@
+﻿@model List<FirstName>
+<p>The List of third names:</p>
+<div class="outItem">
+    @foreach (var firstName in @Model)
+    {
+        <div class="item">
+            <div><b>@firstName.FirstNameId</b></div>
+            <div>@firstName.FirstName1</div>
+        </div>
+    }
+</div>

@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    @*<meta name="viewport" content="width=device-width, initial-scale=1.0" />*@
+    @*<title>@ViewData["Title"] - _1_AuthorsBooks</title>*@
+    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
+    <link rel="stylesheet" href="~/css/site1.css" />
+</head>
+<body>
+    <header>
+        <ul class="mainMenu">
+            <li><a asp-controller="Author" asp-action="Index">Authors</a></li>
+            <li><a asp-controller="FirstName" asp-action="Index">First&nbsp;Names</a></li>
+            <li><a asp-controller="ThirdName" asp-action="Index">Third&nbsp;Names</a></li>
+            <li><a asp-controller="Book" asp-action="Index">Books</a></li>
+            <li><a asp-controller="Genre" asp-action="Index">Genres</a></li>
+            <li><a asp-controller="AuthorsBook" asp-action="Index">Authors&nbsp;Books</a></li>
+        </ul>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    @*<footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2022 - _1_AuthorsBooks - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>*@
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

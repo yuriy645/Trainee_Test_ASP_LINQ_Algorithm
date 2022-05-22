@@ -1,0 +1,16 @@
+﻿@model List<Genre>
+<p>The List of books:</p>
+<div class="outItem">
+    @foreach (var genre in @Model)
+    {
+        <div class="item">
+            <div>
+                <b>@genre.GenreId</b>
+            </div>
+            <div>
+                @genre.GenreName
+            </div>
+        </div>
+    }
+</div>
+

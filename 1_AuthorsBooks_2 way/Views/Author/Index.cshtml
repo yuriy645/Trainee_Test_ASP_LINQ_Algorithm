@@ -1,0 +1,49 @@
+﻿@model List<Author>
+<br />
+<button type='button' onclick="openAuthorForm()">Add new author</button>
+<br />
+<p>The List of books:</p>
+<div class="outItem">
+    @for (int i = 0; i < @Model.Count; i++)
+    {
+        <div class="item">
+            <div><b>@Model[i].AuthorId</b></div>
+            <div>
+                <a asp-controller="Author" asp-action="ViewAuthor" asp-route-authorId="@Model[i].AuthorId">
+                    @Model[i].FirstName.FirstName1&nbsp;@Model[i].AuthorSecondName&nbsp;@Model[i].Patronymic.Patronymic1
+                </a>
+            </div>
+            <div>&nbsp;</div>
+            <div>
+                <b>
+                    <a asp-controller="Author" asp-action="DelAuthor" asp-route-authorId="@Model[i].AuthorId">
+                        <font color="red">
+                            x&nbsp;Удалить
+                        </font>
+                    </a>
+                </b>
+            </div>
+        </div>
+    }
+</div>
+<div class="form-popupAuthors" id="authorForm">
+    <b>Adding a new author</b>
+    <br />
+    <div class="authorNames">
+        <div class="authorName">
+            <label>First Name </label>
+            <input type="text" placeholder="Enter a First Name" name="firstName" id="firstName" required>
+        </div>
+        <div class="authorName">
+            <label>Second Name </label>
+            <input type="text" placeholder="Enter a Second Name" name="secondName" id="secondName" required>
+        </div>
+        <div class="authorName">
+            <label>Third Name </label>
+            <input type="text" placeholder="Enter a Third Name" name="thirdName" id="thirdName" required>
+        </div>
+        <br />
+        <button type="submit" onclick="sendAuthorForm()">Add author</button>
+        <button type="submit" onclick="closeAuthorForm()">Close</button>
+    </div>
+</div>

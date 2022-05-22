@@ -1,0 +1,70 @@
+﻿@model Author
+<form asp-controller="author" asp-action="UpdateAuthorWithBooks" method="post">
+    <button type="submit">Save data and update form</button>   
+        <div class="author">
+            <div class="authorNames">
+                <div class="authorName">
+                    <label asp-for="@Model.AuthorSecondName"></label>
+                    <input asp-for="@Model.AuthorSecondName" />
+                    <span asp-validation-for="@Model.AuthorSecondName" class="text-danger"></span>
+                </div>
+                <div class="authorName">
+                    <label asp-for="@Model.FirstName.FirstName1"></label>
+                    <input asp-for="@Model.FirstName.FirstName1" />
+                    <span asp-validation-for="@Model.FirstName.FirstName1" class="text-danger"></span>
+                </div>
+                <div class="authorName">
+                    <label asp-for="@Model.Patronymic.Patronymic1"></label>
+                    <input asp-for="@Model.Patronymic.Patronymic1" />
+                    <span asp-validation-for="@Model.Patronymic.Patronymic1" class="text-danger"></span>
+                </div>
+                <input asp-for="@Model.AuthorId" id="authorId" />
+            </div>
+            <div class="book">
+                <div class="bookNote"> <p>Books</p></div>
+                <div class="butRight">
+                    <button type='button' onclick="openForm('@Model.AuthorId', '@Model.AuthorSecondName')">Add Book</button>
+                </div>
+            </div>
+            @for (int j = 0; j < @Model.AuthorsBooks.Count; j++)
+            {
+                <div class="books">
+                    <p><b>Title:</b>&nbsp;&nbsp;&nbsp;@Model.AuthorsBooks[j].Book.BookName</p>
+                    <p><b>Genre:</b>&nbsp;@Model.AuthorsBooks[j].Book.Genre.GenreName</p>
+                    <p><b>Pages:</b>&nbsp;&nbsp;@Model.AuthorsBooks[j].Book.Pages</p>
+
+                    <input asp-for="@Model.AuthorsBooks[j].Book.BookName" />
+                    <input asp-for="@Model.AuthorsBooks[j].Book.Genre.GenreName" />
+                    <input asp-for="@Model.AuthorsBooks[j].Book.Pages" />
+                </div>
+            }
+        </div>    
+</form>
+<div class="form-popup1" id="bookForm">
+    <b>Adding a book to the Author  <span id="authorSecondNameField"></span>  </b>
+    <br />
+    <div class="authorNames">   
+        <div class="authorName">
+            <label>Title </label>
+            <input type="text" placeholder="Enter a title" name="bookName" id="bookName" required>
+        </div>
+        <div class="authorName">
+            <label>Genre </label>
+            <input type="text" placeholder="Enter a genre" name="genre" id="genre" required>
+        </div>
+        <div class="authorName">
+            <label>Pages </label>
+            <input type="text" placeholder="Number of pages" name="pages" id="pages" required>
+        </div>
+        <br />
+        <button type="submit" onclick="sendBookForm()">Add book</button>
+        <button type="submit" onclick="closeBookForm()">Close</button>
+    </div>
+</div>
+<script>    
+</script>
+
+
+
+
+
