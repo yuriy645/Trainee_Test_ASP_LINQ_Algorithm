@@ -115,8 +115,11 @@ Words of length: 13, Count: 1
 ## 3. Write a program to remove duplicates from a sorted int[]
 
 INPUT: int[] {1,2,3,4,4,56}
+
 OUTPUT: int [] {1,2,3,4,56}
+
 You are not allowed to modify an existing array.
+
 You are not allowed to use LINQ.
 
 Think about time and space complexity.
