@@ -1,0 +1,217 @@
+﻿@model List<Author>
+
+
+<button type='button' onclick="openAuthorForm()">Add new author</button>
+<br /><br />
+
+    <form  asp-controller="home" asp-action="Index" method="post">
+
+        <button type="submit">Save data and update form</button>
+
+        @for (int i = 0; i < @Model.Count; i++)
+        {
+            <div class="author">
+
+                <div class="authorNames">
+                    <div class="authorName">
+                        <label asp-for="@Model[i].AuthorSecondName"></label>
+                        <input  asp-for="@Model[i].AuthorSecondName" />
+                        <span asp-validation-for="@Model[i].AuthorSecondName" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="authorName">
+                        <label asp-for="@Model[i].FirstName.FirstName1"></label>
+                        <input asp-for="@Model[i].FirstName.FirstName1" />
+                        <span asp-validation-for="@Model[i].FirstName.FirstName1" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="authorName">
+                        <label asp-for="@Model[i].Patronymic.Patronymic1"></label>
+                        <input asp-for="@Model[i].Patronymic.Patronymic1" />
+                        <span asp-validation-for="@Model[i].Patronymic.Patronymic1" class="text-danger"></span>
+                    </div>
+                    
+                </div>
+                
+
+                <div class="book">
+                    <div class="bookNote"> <p>Books</p></div>
+
+
+                    <div class="butRight">
+
+                        <button type='button' onclick="openForm('@Model[i].AuthorId', '@Model[i].AuthorSecondName')">Add Book</button>
+
+                    </div>
+
+                </div>
+               
+                    @*@foreach (var authorsBook in @Model[i].AuthorsBooks)*@
+                    @for (int j = 0; j < @Model[i].AuthorsBooks.Count; j++)
+
+                    {
+                        <div class="books">
+                            <p><b>Title:</b>&nbsp;&nbsp;&nbsp;@Model[i].AuthorsBooks[j].Book.BookName</p>
+                            <p><b>Genre:</b>&nbsp;@Model[i].AuthorsBooks[j].Book.Genre.GenreName</p>
+                            <p><b>Pages:</b>&nbsp;&nbsp;@Model[i].AuthorsBooks[j].Book.Pages</p>
+
+                            <input asp-for="@Model[i].AuthorsBooks[j].Book.BookName" />
+                            <input asp-for="@Model[i].AuthorsBooks[j].Book.Genre.GenreName" />
+                            <input asp-for="@Model[i].AuthorsBooks[j].Book.Pages" />
+                        </div>
+                    }
+                
+                
+            </div>
+        }
+
+
+
+    </form>
+
+
+
+
+
+    <div class="form-popup1" id="bookForm">
+        
+            <b>Adding a book to the Author  <span id="authorSecondNameField"></span>  </b>
+            <br />
+            <div class="authorNames">
+                <input type="hidden" id="authorId">
+
+                <div class="authorName">
+                    <label>Title </label>
+                    <input type="text" placeholder="Enter a title" name="bookName" id="bookName" required>
+                </div>
+
+                <div class="authorName">
+                    <label>Genre </label>
+                    <input type="text" placeholder="Enter a genre" name="genre" id="genre" required>
+                </div>
+
+                <div class="authorName">
+                    <label>Pages </label>
+                    <input type="text" placeholder="Number of pages" name="pages" id="pages" required>
+                </div>
+                <br />
+
+                <button type="submit" onclick="sendBookForm()">Add book</button>
+                <button type="submit" onclick="closeBookForm()">Close</button>
+
+            </div>
+        
+
+    </div>
+
+        <div class="form-popupAuthors" id="authorForm">
+
+            <b>Adding a new author</b>
+            <br />
+            <div class="authorNames">
+                <div class="authorName">
+                    <label>First Name </label>
+                    <input type="text" placeholder="Enter a First Name" name="firstName" id="firstName" required>
+                </div>
+
+                <div class="authorName">
+                    <label>Second Name </label>
+                    <input type="text" placeholder="Enter a Second Name" name="secondName" id="secondName" required>
+                </div>
+
+                <div class="authorName">
+                    <label>Third Name </label>
+                    <input type="text" placeholder="Enter a Third Name" name="thirdName" id="thirdName" required>
+                </div>
+                <br />
+                <button type="submit" onclick="sendAuthorForm()">Add author</button>
+                <button type="submit" onclick="closeAuthorForm()">Close</button>
+            </div>
+
+        </div>
+
+        <script>
+
+            function openForm(authorId, authorSecondName) {
+
+                document.getElementById("authorSecondNameField").innerHTML = authorSecondName;
+                document.getElementById("authorId").value = authorId;
+
+                document.querySelector('.form-popup1').style.display = 'block';
+            }
+
+            function openAuthorForm() {
+
+                document.querySelector('.form-popupAuthors').style.display = 'block';
+            }
+
+            function sendBookForm() {
+
+                let data = new FormData();
+                data.append("authorId", document.getElementById("authorId").value);
+                data.append("book.BookName", document.getElementById("bookName").value);
+                data.append("book.Genre.GenreName", document.getElementById("genre").value);
+                data.append("book.Pages", document.getElementById("pages").value);
+
+                let xhr = new XMLHttpRequest();
+                xhr.open("post", "Home/AddBook");
+                xhr.onload = () => {
+                    let response = JSON.parse(xhr.response);
+
+                    alert(
+                            response.message
+                        //response.bookName + "\n" +
+                        //response.genreName + "\n" +
+                        //response.pages
+                    );
+                }
+
+                xhr.send(data); // отправка данных формы, вместе с остальными данными запроса
+
+            }
+
+            function sendAuthorForm() {
+
+                let data = new FormData();
+                data.append("newAuthor.FirstName.FirstName1", document.getElementById("firstName").value);
+                data.append("newAuthor.AuthorSecondName", document.getElementById("secondName").value);
+                data.append("newAuthor.Patronymic.Patronymic1", document.getElementById("thirdName").value);
+
+                let xhr = new XMLHttpRequest();
+                xhr.open("post", "Home/AddAuthor");
+                xhr.onload = () => {
+                    let response = JSON.parse(xhr.response);
+
+                    alert(
+                        response.message
+
+                    );
+                }
+
+                xhr.send(data); // отправка данных формы, вместе с остальными данными запроса
+
+            }
+
+
+
+            function closeBookForm() {
+                document.getElementById("bookForm").style.display = "none";
+            }
+
+            function closeAuthorForm() {
+                document.getElementById("authorForm").style.display = "none";
+            }
+
+            function saveData() {
+                let data = new FormData();
+                let xhr = new XMLHttpRequest();
+                xhr.open("post", "Home/SaveData");
+
+                xhr.send(data);
+            }
+
+        </script>
+
+
+
+

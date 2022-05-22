@@ -1,0 +1,75 @@
+﻿
+
+.author {
+    margin: 5px;
+    width: 450px;
+    border: 2px solid blue;
+    border-radius: 5px;
+}
+
+.form-popup1 {
+    display: none;
+    position: fixed;
+    top: 100px;
+    left: 500px;
+    z-index: 9;
+    border: 1px solid blue;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 15px;
+}
+
+.form-popupAuthors {
+    display: none;
+    position: fixed;
+    top: 300px;
+    left: 500px;
+    z-index: 9;
+    border: 1px solid blue;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 15px;
+}
+
+.book {
+    display: inline-flex;
+    flex-direction: row;
+    width: 400px;
+    border-bottom: 1px solid gray;
+    margin: 0px 10px 0px 10px;
+    padding: 0px 10px 0px 10px;
+}
+
+.butRight {
+    margin-left: auto;
+    position: relative;
+    top: 20px;
+}
+
+.bookNote {
+    position: relative;
+    top: 10px;
+}
+
+.authorNames {
+    margin: 10px 10px 0px 10px;
+    width: 300px;
+}
+
+.authorName {
+    margin: 10px 10px 0px 10px;
+    text-align: right;
+    
+}
+
+.books {
+    margin: 10px;
+    width: 300px;
+    border: 1px solid gray;
+    padding-left: 10px;
+}
+
+.text-danger {
+    color: red;
+    font-weight: bold;
+}
