@@ -1,18 +1,23 @@
 # Trainee_Test_ASP_LINQ_Algorithm
 ## 1. Task for ASP.NET programmer
 It is necessary to write a small web application that will display a list of authors, allow them to be edited and added.
+
 The author has the following attributes:
+
 • Last name, First name, Patronymic - text fields (all fields are required);
-•	Date of Birth
+• Date of Birth
 • List of books - each book has its own attributes (title, genre, number of pages)
+
 The data must be stored in a database that must conform to third normal form.
+
 1.1 Requirements for the result
 The result should be a working application and a script to create the database.
 Adding books must be implemented without reloading the page, through a pop-up form. Saving all the entered data occurs by 
 clicking on the "Save" button, before that, data about the added books should not get into the database.
 The use of MVC Razor, jQuery, Entity Framework will be a plus.
+
 1.2 Input parameters
-The editing form should correspond to the prototype in task.png
+The editing form should correspond to the prototype in task.png.
 
 ## 2.	LINQ
 Group the unique words of same length in a given sentence, sort the groups in increasing order and display the groups, the word count and the words of that length.
@@ -67,9 +72,7 @@ Words of length: 13, Count: 1
 ## 3. Write a program to remove duplicates from a sorted int[]
 
 INPUT: int[] {1,2,3,4,4,56}
-
 OUTPUT: int [] {1,2,3,4,56}
-
 You are not allowed to modify an existing array.
 You are not allowed to use LINQ.
 
